@@ -1,54 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-    <script src="../assets/js/libs/vuejs/2.2.1/vue.js"></script>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<title>欢迎你</title>
+<script type="text/javascript">
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "https://hm.baidu.com/hm.js?c58d0efac8b16026bfa0657d3add699f";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
 </head>
 <body>
-<div id="app">{{message}}
-<button v-on:click="reverseMessage">点击</button>
-    <input v-model="message">
-    <input v-model="message">
-    <a v-bind:href="url">百度</a>
-    <span v-bind:html="money | capitalize('333')"></span>
-    <span v-bind:html="moneys"></span>
-    <span >{{newMessage}}</span>
-</div>
-<script >
-    Vue.component('my-component',{
-        template:'<div></div>'
-    })
-    var app = new Vue({
-        el:'#app',
-        data:{
-            money:23,
-            url:'http://www.baidu.com',
-            message:'你好',
-            persons:[{name:'张三'}]
-        },
-        computed: {
-            newMessage: function(){
-                return this.message.split('').reverse().join('');
-            },
-            moneys:function(){
-                return '$'+this.money
-            }
-        },
-        methods:{
-            reverseMessage: function(){
-                this.message = this.message.split('').reverse().join('');
-            }
-        },
-        filters: {
-            capitalize: function(value){
-                if(!value) return '';
-                value = value.toString();
-                console.log(arguments);
-                return value.charAt(0).toUpperCase() + value.substring(1);
-            }
-        }
-    })
-</script>
+	<div id="app">
+		{{message}}
+		<button v-on:click="reverseMessage">点击</button>
+		<input v-model="message"> <input v-model="message"> <a v-bind:href="url">百度</a> <span v-bind:html="money | capitalize('333')"></span> <span v-bind:html="moneys"></span> <span>{{newMessage}}</span>
+	</div>
+	<script>
+		Vue.component('my-component', {
+			template : '<div></div>'
+		})
+		var app = new Vue({
+			el : '#app',
+			data : {
+				money : 23,
+				url : 'http://www.baidu.com',
+				message : '你好',
+				persons : [ {
+					name : '张三'
+				} ]
+			},
+			computed : {
+				newMessage : function() {
+					return this.message.split('').reverse().join('');
+				},
+				moneys : function() {
+					return '$' + this.money
+				}
+			},
+			methods : {
+				reverseMessage : function() {
+					this.message = this.message.split('').reverse().join('');
+				}
+			},
+			filters : {
+				capitalize : function(value) {
+					if (!value)
+						return '';
+					value = value.toString();
+					console.log(arguments);
+					return value.charAt(0).toUpperCase() + value.substring(1);
+				}
+			}
+		})
+	</script>
 </body>
 </html>
