@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../assets/js/libs/vuejs/2.2.1/vue.js"></script>
+</head>
+<body>
+<div id="app">{{message}}
+<button v-on:click="reverseMessage">点击</button>
+    <input v-model="message">
+    <input v-model="message">
+    <a v-bind:href="url">百度</a>
+    <span v-bind:html="money | capitalize('333')"></span>
+    <span v-bind:html="moneys"></span>
+    <span >{{newMessage}}</span>
+</div>
+<script >
+    Vue.component('my-component',{
+        template:'<div></div>'
+    })
+    var app = new Vue({
+        el:'#app',
+        data:{
+            money:23,
+            url:'http://www.baidu.com',
+            message:'你好',
+            persons:[{name:'张三'}]
+        },
+        computed: {
+            newMessage: function(){
+                return this.message.split('').reverse().join('');
+            },
+            moneys:function(){
+                return '$'+this.money
+            }
+        },
+        methods:{
+            reverseMessage: function(){
+                this.message = this.message.split('').reverse().join('');
+            }
+        },
+        filters: {
+            capitalize: function(value){
+                if(!value) return '';
+                value = value.toString();
+                console.log(arguments);
+                return value.charAt(0).toUpperCase() + value.substring(1);
+            }
+        }
+    })
+</script>
+</body>
+</html>
